@@ -7,7 +7,7 @@ const messageElement = document.querySelector('#birthday-message');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 document.querySelector('#reset-journey').addEventListener('click', () => {
-  window.location.assign(new URL('./page1.html', document.baseURI).href);
+  window.location.assign(new URL('./index.html', document.baseURI).href);
 });
 
 if (reducedMotion) {
