@@ -1,0 +1,35 @@
+:root { --ink: #fffaf2; --muted: #e9d5df; --peach: #ffc19c; --pink: #ff91b5; --gold: #ffd88e; --deep: #170c28; }
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body { background: var(--deep); color: var(--ink); font-family: "Trebuchet MS", Arial, sans-serif; overflow-x: hidden; }
+.page { min-height: 100svh; position: relative; display: grid; place-items: center; overflow: hidden; isolation: isolate; padding: 42px 18px; background: radial-gradient(circle at 50% 31%, #6a3b59 0, #3b1c42 37%, var(--deep) 78%); }
+.page::before { content: ""; position: absolute; inset: 0; opacity: .5; background-image: radial-gradient(rgba(255,255,255,.8) 0 1px, transparent 1.5px), radial-gradient(rgba(255,220,143,.7) 0 1px, transparent 1.6px); background-position: 8% 20%, 72% 12%; background-size: 137px 103px, 187px 143px; pointer-events: none; }
+.moon-glow { position: absolute; width: 430px; height: 430px; top: -220px; left: calc(50% - 215px); border-radius: 50%; background: rgba(255,181,190,.18); box-shadow: 0 0 140px rgba(255,164,191,.25); filter: blur(3px); pointer-events: none; }.stars { position: absolute; inset: 0; background: linear-gradient(90deg, transparent 49.8%, rgba(255,255,255,.025) 50%, transparent 50.2%); opacity: .6; pointer-events: none; }
+.letter-wrap { width: min(100%, 760px); position: relative; z-index: 2; text-align: center; animation: enter 1s cubic-bezier(.2,.8,.2,1) both; }.eyebrow { margin: 0 0 18px; color: var(--gold); font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; font-weight: bold; }.heart-seal { display: grid; place-items: center; width: 47px; height: 47px; margin: 0 auto 17px; border: 1px solid rgba(255,216,142,.7); border-radius: 50%; color: #ffe1a2; font-size: 1.3rem; box-shadow: 0 0 24px rgba(255,216,142,.25), inset 0 0 15px rgba(255,216,142,.1); animation: heartbeat 2s ease-in-out infinite; }
+h1 { margin: 0; font: 700 clamp(2.65rem, 8.2vw, 5.8rem)/.92 Georgia, serif; letter-spacing: -.08em; } h1 em { color: var(--peach); font-style: italic; font-weight: 400; } h1 span { font-family: sans-serif; font-size: .4em; vertical-align: .16em; letter-spacing: 0; }.letter-rule { display: flex; align-items: center; justify-content: center; gap: 12px; width: min(100%, 250px); margin: 25px auto 20px; color: var(--gold); }.letter-rule span { height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(255,216,142,.65)); }.letter-rule span:last-child { background: linear-gradient(90deg, rgba(255,216,142,.65), transparent); }
+.letter-card { position: relative; width: min(100%, 650px); margin: 0 auto; padding: 31px clamp(24px, 6vw, 58px) 33px; text-align: left; border: 1px solid rgba(255,236,213,.22); border-radius: 16px; background: linear-gradient(135deg, rgba(255,249,240,.12), rgba(255,214,220,.07)); box-shadow: 0 25px 70px rgba(8,2,16,.34), inset 0 1px 0 rgba(255,255,255,.12); backdrop-filter: blur(13px); }.letter-card::before, .letter-card::after { content: "✦"; position: absolute; color: rgba(255,216,142,.65); font-size: .8rem; }.letter-card::before { top: 18px; left: 23px; }.letter-card::after { right: 23px; bottom: 18px; }.letter-greeting { margin: 0 0 17px; color: var(--peach); font: italic 1.25rem Georgia, serif; }.letter-card > p:nth-child(2) { min-height: 140px; margin: 0; color: var(--muted); font: 1.03rem/1.85 Georgia, serif; }.letter-signoff { margin: 24px 0 0; color: var(--muted); font: .94rem/1.6 Georgia, serif; text-align: right; }.letter-signoff em { color: var(--peach); }.footer-note { margin: 21px 0 0; color: rgba(255,249,242,.55); font-size: .77rem; letter-spacing: .06em; }.particle { position: absolute; color: var(--pink); font-size: var(--size); opacity: 0; animation: rise var(--duration) ease-in infinite; animation-delay: var(--delay); pointer-events: none; }
+@keyframes enter { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: none; } } @keyframes heartbeat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.15); } 30% { transform: scale(1); } 45% { transform: scale(1.1); } } @keyframes rise { 0% { opacity: 0; transform: translateY(15px) scale(.7); } 15% { opacity: .65; } 100% { opacity: 0; transform: translateY(-95vh) scale(1.1) rotate(20deg); } } @keyframes type-in { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 520px) { .page { padding: 28px 15px; }.letter-card { padding: 27px 22px 29px; }.letter-card > p:nth-child(2) { font-size: .98rem; line-height: 1.72; }.letter-signoff { font-size: .86rem; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+.reset-button { margin-top: 17px; border: 1px solid rgba(255,216,142,.42); border-radius: 999px; padding: 10px 18px; color: rgba(255,249,242,.72); background: rgba(255,255,255,.06); cursor: pointer; font-size: .78rem; letter-spacing: .04em; transition: background .25s, border-color .25s, color .25s, transform .25s; }
+.reset-button:hover, .reset-button:focus-visible { color: var(--ink); background: rgba(255,180,193,.16); border-color: rgba(255,216,142,.8); transform: translateY(-2px); outline: none; }
+.letter-card > p:nth-child(2) { white-space: pre-line; }
+@media (max-width: 600px) {
+  .page { min-height: 100dvh; align-items: start; padding: 28px 14px 24px; overflow-y: auto; }
+  .letter-wrap { width: 100%; }
+  .eyebrow { margin-bottom: 15px; font-size: .63rem; letter-spacing: .18em; }
+  .heart-seal { width: 40px; height: 40px; margin-bottom: 14px; font-size: 1.1rem; }
+  h1 { font-size: clamp(2.35rem, 11.5vw, 3.55rem); letter-spacing: -.08em; }
+  .letter-rule { width: min(100%, 210px); margin: 20px auto 15px; }
+  .letter-card { width: 100%; padding: 23px 17px 25px; border-radius: 13px; }
+  .letter-greeting { margin-bottom: 13px; font-size: 1.08rem; }
+  .letter-card > p:nth-child(2) { min-height: 0; font-size: .92rem; line-height: 1.65; }
+  .letter-signoff { margin-top: 20px; font-size: .82rem; line-height: 1.45; text-align: left; }
+  .footer-note { max-width: 300px; margin: 16px auto 0; font-size: .68rem; line-height: 1.4; }
+  .reset-button { margin-top: 14px; padding: 9px 15px; font-size: .72rem; }
+}
+@media (max-width: 600px) and (max-height: 700px) {
+  .page { padding-top: 20px; }
+  .letter-card { padding-top: 19px; padding-bottom: 20px; }
+  .letter-card > p:nth-child(2) { font-size: .88rem; line-height: 1.55; }
+}
